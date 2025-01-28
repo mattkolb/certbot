@@ -28,6 +28,10 @@ class Addr(common.Addr):
                      self.is_wildcard() and other.is_wildcard()))
         return False
 
+    @classmethod
+    def fromstring(cls, str_addr: str) -> "Addr":
+        return super().strict_fromstring(str_addr)
+
     def __repr__(self) -> str:
         return f"certbot_apache._internal.obj.Addr({repr(self.tup)})"
 

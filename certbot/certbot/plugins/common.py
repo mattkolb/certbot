@@ -262,7 +262,12 @@ class Addr:
 
     @classmethod
     def fromstring(cls: Type[GenericAddr], str_addr: str) -> Optional[GenericAddr]:
-        """Initialize Addr from string."""
+        """Initialize Addr from a string."""
+        return cls.strict_fromstring(str_addr)
+
+    @classmethod
+    def strict_fromstring(cls: Type[GenericAddr], str_addr: str) -> GenericAddr:
+        """Initialize Addr from a string and never return None."""
         if str_addr.startswith('['):
             # ipv6 addresses starts with [
             endIndex = str_addr.rfind(']')
